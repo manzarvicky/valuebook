@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValueBook Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <div class="company-info">
+                <h2>ValueBook</h2>
+                <p>Kala Softech Pvt ltd F.Y 01-04-2024 - 31-03-2025 Version 1.01.1 Pro</p>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="top-bar-icons">
+                <button class="icon-btn"><span class="material-icons">settings</span></button>
+                <button class="icon-btn"><span class="material-icons">mail</span></button>
+                <button class="icon-btn"><span class="material-icons">notifications</span></button>
+                <button class="icon-btn"><span class="material-icons">help</span></button>
+                <button class="icon-btn"><span class="material-icons">support</span></button>
+            </div>
+            <div class="user-profile">
+                    <div class="user-info">
+                    <p class="user-name">John Doe</p>
+                    <p class="user-role">Administrator</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/logo.svg" alt="Margbooks Logo" class="logo">
+                <button class="toggle-sidebar" id="toggleSidebar">
+                    <span class="toggle-icon">≡</span>
+                </button>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Type to search" class="search-input">
+                <span class="search-icon">🔍</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><span class="material-icons">dashboard</span><span class="text">Dashboard</span></a></li>
+                    <li class="has-submenu">
+                        <a href="#" class="menu-item"><span class="material-icons">settings_applications</span><span class="text">Master</span> <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="material-icons">account_circle</span><span class="text">Accounts Master</span></a></li>
+                            <li><a href="#"><span class="material-icons">inventory</span><span class="text">Inventory Master</span></a></li>
+                            <li><a href="#"><span class="material-icons">price_change</span><span class="text">Rate Master</span></a></li>
+                            <li><a href="#"><span class="material-icons">local_offer</span><span class="text">Discount Master</span></a></li>
+                            <li><a href="#"><span class="material-icons">more_horiz</span><span class="text">Other Master</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="menu-item"><span class="material-icons">receipt_long</span><span class="text">Transaction</span> <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="material-icons">point_of_sale</span><span class="text">Sales</span></a></li>
+                            <li><a href="#"><span class="material-icons">assignment_return</span><span class="text">Sales Return</span></a></li>
+                            <li><a href="#"><span class="material-icons">shopping_cart</span><span class="text">Purchase</span></a></li>
+                            <li><a href="#"><span class="material-icons">assignment_return</span><span class="text">Purchase Return</span></a></li>
+                            <li><a href="#"><span class="material-icons">warning</span><span class="text">Breakage & Expiry</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#" class="menu-item"><span class="material-icons">account_balance</span><span class="text">Accounting Transaction</span> <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="material-icons">payments</span><span class="text">Payment</span></a></li>
+                            <li><a href="#"><span class="material-icons">receipt</span><span class="text">Receipt</span></a></li>
+                            <li><a href="#"><span class="material-icons">sync_alt</span><span class="text">Contra</span></a></li>
+                            <li><a href="#"><span class="material-icons">book</span><span class="text">Journal</span></a></li>
+                            <li><a href="#"><span class="material-icons">note_add</span><span class="text">Credit Note</span></a></li>
+                             <li><a href="#"><span class="material-icons">note_add</span><span class="text">Debit Note</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#" class="menu-item"><span class="material-icons">assessment</span><span class="text">Reports</span> <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="material-icons">inventory_2</span><span class="text">Inventory</span></a></li>
+                            <li><a href="#"><span class="material-icons">account_balance_wallet</span><span class="text">Accounting</span></a></li>
+                            <li><a href="#"><span class="material-icons">pending_actions</span><span class="text">Outstanding</span></a></li>
+                            <li><a href="#"><span class="material-icons">description</span><span class="text">GST Statement</span></a></li>
+                            <li><a href="#"><span class="material-icons">summarize</span><span class="text">Final Account </span></a></li>
+                             <li><a href="#"><span class="material-icons">article</span><span class="text">Other Report</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="#" class="menu-item"><span class="material-icons">build</span><span class="text">Tools</span> <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="material-icons">backup</span><span class="text">Backup Restore</span></a></li>
+                            <li><a href="#"><span class="material-icons">settings</span><span class="text">Setting</span></a></li>
+                            <li><a href="#"><span class="material-icons">security</span><span class="text">Security</span></a></li>
+                            <li><a href="#"><span class="material-icons">file_download</span><span class="text">Export Data</span></a></li>
+                            <li><a href="#"><span class="material-icons">bug_report</span><span class="text">Diagnostics </span></a></li>
+                             <li><a href="#"><span class="material-icons">build_circle</span><span class="text">Data Correction</span></a></li>
+                        </ul>
+                    </li>
+
+                   
+
+
+
+
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p>Last Sync: 26-06-2025 | 10:31 AM</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-light">Last 30 Days</button>
+                    <button class="btn btn-light">Customize</button>
+                    <div class="financial-year">Financial Year: 2024-2025</div>
+                </div>
+            </header>
+            <section class="stats-cards">
+                <div class="card stat-card"><p>Total Sale</p><h3>₹ 25.42</h3></div>
+                <div class="card stat-card"><p>Total Purchase</p><h3>₹ 0.00</h3></div>
+                <div class="card stat-card"><p>Total Income</p><h3>₹ 0.00</h3></div>
+                <div class="card stat-card"><p>Total Expenses</p><h3>₹ 0.01</h3></div>
+            </section>
+            <section class="charts">
+                <div class="card chart-card"><canvas id="net-sale-chart"></canvas></div>
+                <div class="card chart-card"><canvas id="net-purchase-chart"></canvas></div>
+                <div class="card chart-card"><canvas id="flow-chart"></canvas></div>
+            </section>
+            <section class="summary-cards">
+                <div class="card summary-card">
+                    <h3>Fund Summary</h3>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <span class="label">Bank Balance</span>
+                            <span class="value">₹ 8330.76</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Cash Balance</span>
+                            <span class="value">₹ 5664.95</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Submitted</span>
+                            <span class="value">₹ 0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Total</span>
+                            <span class="value">₹ 0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">FD/Deposit</span>
+                            <span class="value">₹ 0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <h3>Outstanding</h3>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <span class="label">Current Receivable</span>
+                            <span class="value">₹ 580.80</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Overdue Receivable</span>
+                            <span class="value">₹ 580.80</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Current Payable</span>
+                            <span class="value">₹ 42781.80</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Overdue Payable</span>
+                            <span class="value">₹ 42781.80</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <h3>Business</h3>
+                    <div class="summary-content">
+                        <div class="summary-item">
+                            <span class="label">CGST Payable</span>
+                            <span class="value">₹ 0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">SGST Payable</span>
+                            <span class="value">₹ 0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">IGST Payable</span>
+                            <span class="value">₹ 4.57</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
