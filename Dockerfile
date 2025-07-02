@@ -1,20 +1,11 @@
-# Use Node.js as base image
-FROM node:18-alpine
+# Use nginx as base image
+FROM nginx:alpine
 
-# Set working directory
-WORKDIR /app
-
-# Copy package files
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy project files
-COPY . .
+# Copy website files to nginx html directory
+COPY . /usr/share/nginx/html/
 
 # Expose port 3000
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
