@@ -2,64 +2,39 @@ pipeline {
     agent any
 
     environment {
-        // Define environment variables
-        APP_NAME = 'ValueBook'
-        DOCKER_IMAGE = 'valuebook'
-        DOCKER_TAG = "${BUILD_NUMBER}"
+        IMAGE_NAME = 'valuebook-site'
+        CONTAINER_NAME = 'valuebook-container'
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone') {
             steps {
-                // Get code from repository
-                checkout scm
+                git branch: 'main', url: 'https://github.com/manzarvicky/valuebook.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    // Build Docker image
-                    sh "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
-                    sh "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
-                }
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
 
-        stage('Deploy Container') {
+        stage('Run Docker Container') {
             steps {
-                script {
-                    // Stop existing container if running
-                    sh 'docker-compose down || true'
-                    
-                    // Start new container
-                    sh 'docker-compose up -d'
-                }
-            }
-        }
-
-        stage('Health Check') {
-            steps {
-                // Wait for container to be ready
-                sh 'sleep 5'
-                
-                // Check if website is responding
-                sh 'curl -f http://localhost:3000 || exit 1'
+                sh '''
+                docker rm -f $CONTAINER_NAME || true
+                docker run -d --name $CONTAINER_NAME -p 8080:80 $IMAGE_NAME
+                '''
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Website successfully deployed in Docker container.'
         }
         failure {
-            echo 'Pipeline failed!'
-            // Cleanup on failure
-            sh 'docker-compose down || true'
-        }
-        always {
-            // Clean workspace after build
-            cleanWs()
+            echo 'Something went wrong.'
         }
     }
+}
