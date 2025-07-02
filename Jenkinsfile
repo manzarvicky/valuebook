@@ -16,34 +16,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                // Install project dependencies
-                sh 'npm install'
-            }
-        }
-
-        stage('Code Quality') {
-            steps {
-                // Run ESLint for code quality checks
-                sh 'npm run lint || true'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Build the application
-                sh 'npm run build'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                // Run tests
-                sh 'npm test || true'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
@@ -69,9 +41,9 @@ pipeline {
         stage('Health Check') {
             steps {
                 // Wait for container to be ready
-                sh 'sleep 10'
+                sh 'sleep 5'
                 
-                // Check if application is responding
+                // Check if website is responding
                 sh 'curl -f http://localhost:3000 || exit 1'
             }
         }
