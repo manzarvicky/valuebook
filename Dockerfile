@@ -7,5 +7,5 @@ COPY . /usr/share/nginx/html/
 # Expose port 3000
 EXPOSE 3000
 
-# Copy custom nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Start the application
+CMD ["npm", "start"]
